@@ -7,11 +7,11 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - cd LF2
-      - zip -r9 ../deployment_package.zip .
+      - zip -r9 ../LF2deployment_package.zip .
       - cd ..
-      - zip -g deployment_package.zip LF2/lambda_function.py
+      - zip -g LF2deployment_package.zip LF2/lambda_function.py
   post_build:
     commands:
       - echo "Updating lambda Function..."
-      - aws lambda update-function-code --function-name LF2 --zip-file fileb://deployment_package.zip
+      - aws lambda update-function-code --function-name LF2 --zip-file fileb://LF2deployment_package.zip
       - echo "DONE!!"
