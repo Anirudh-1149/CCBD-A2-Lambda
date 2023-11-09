@@ -13,7 +13,6 @@ INDEX = 'photos'
 
 
 def lambda_handler(event, context):
-    print('test2')
     if not ('queryStringParameters' in event) :
         return {}
     searchInput = event['queryStringParameters']['q']
@@ -32,22 +31,22 @@ def disambiguate(searchText):
         localeId='en_US',
         sessionId=('testuser' + str(random.randint(1, 1000))),
         text=searchText)
-    birds = False
-    trees = False
+    dog = False
+    cat = False
     print(lex_response['sessionState']['intent'])
     if 'slots' in lex_response['sessionState']['intent']:
-        if 'bird' in lex_response['sessionState']['intent']['slots'] and lex_response['sessionState']['intent']['slots']['bird'] is not None:
-            birds = True
+        if 'dog' in lex_response['sessionState']['intent']['slots'] and lex_response['sessionState']['intent']['slots']['dog'] is not None:
+            dog = True
             
-        if 'tree' in lex_response['sessionState']['intent']['slots'] and lex_response['sessionState']['intent']['slots']['tree'] is not None:
-            trees = True
+        if 'cat' in lex_response['sessionState']['intent']['slots'] and lex_response['sessionState']['intent']['slots']['cat'] is not None:
+            cat = True
     photos = []
-    if birds : 
+    if dog : 
         bird_photos = query("dog")
         for photo in bird_photos:
             print(photo)
             photos.append(photo)
-    if trees:
+    if cat:
         tree_photos = query("cat")
         for photo in tree_photos : 
             photos.append(photo)
