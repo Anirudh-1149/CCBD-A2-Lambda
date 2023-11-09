@@ -13,6 +13,7 @@ INDEX = 'photos'
 
 
 def lambda_handler(event, context):
+    print('testing code pipeline')
     print(event)
     try:
         bucket_name = event['Records'][0]['s3']['bucket']['name']
