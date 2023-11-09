@@ -13,7 +13,7 @@ INDEX = 'photos'
 
 
 def lambda_handler(event, context):
-    print('test')
+    print('test2')
     if not ('queryStringParameters' in event) :
         return {}
     searchInput = event['queryStringParameters']['q']
