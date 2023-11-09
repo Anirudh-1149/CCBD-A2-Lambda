@@ -5,8 +5,12 @@ phases:
       python: 3.8
   build:
     commands:
-      - echo "Updating lambda Function..."
+      - echo "Zipping deployment package..."
       - cd LF2
-      - aws lambda update-function-code --function-name LF2 --zip-file fileb://deployment_package.zip
+      - zip -r9 deployment_package.zip .
+      - zip -g deployment_package.zip lambda_function.py
+  post_build:
+    commands:
+      - echo "Updating lambda Function..."
+      - aws lambda update-function-code --function-name LF2 --zip-file LF2/fileb://deployment_package.zip
       - echo "DONE!!"
-    
