@@ -59,7 +59,6 @@ def disambiguate(searchText):
     for photo in photos:
         photo_name = photo['objectKey']
         s3_response = s3_client.get_object(Bucket='pawa-b2-ccbd', Key=photo_name)
-        print  (s3_response['Body'].read())
         image_base64 = base64.b64encode(s3_response['Body'].read()).decode('utf-8')
         Image = {
             'name' : photo_name,
