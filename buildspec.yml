@@ -21,6 +21,12 @@ phases:
       # - aws lambda update-function-code --function-name index-photos --zip-file fileb://IndexPhotosdeployment_package.zip
       - echo "DONE!!"
 artifacts:
-  files:
-    - IndexPhotosdeployment_package.zip
-    - LF2deployment_package.zip
+  secondary-artifacts:
+    artifact1:
+      base-directory:
+      files:
+        - LF2deployment_package.zip
+    artifact2:
+      base-directory:
+      files:
+        - IndexPhotosdeployment_package.zip
