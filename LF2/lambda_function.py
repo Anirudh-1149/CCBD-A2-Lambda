@@ -18,6 +18,7 @@ BOTALIASID = os.environ.get('BOTALIASID')
 
 
 def lambda_handler(event, context):
+    print('testing demo')
     if not ('queryStringParameters' in event) :
         return {}
     searchInput = event['queryStringParameters']['q']
